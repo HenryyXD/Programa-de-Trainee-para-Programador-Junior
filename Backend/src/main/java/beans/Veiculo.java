@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,20 +16,23 @@ import javax.persistence.TemporalType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "veiculos")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Veiculo implements Serializable{
+@ToString
+@SequenceGenerator(name = "veiculo_seq", sequenceName = "veiculo_seq", allocationSize = 1, initialValue = 1)
+public class Veiculo implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6086916148491948280L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "veiculo_seq")
 	private long id;
 
 	@Column(nullable = false)
