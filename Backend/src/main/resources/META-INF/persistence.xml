@@ -10,8 +10,8 @@
 	
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!-- Classes (entidades) que serao mapeadas -->
-        <class>classes.Veiculo</class>
-        <class>classes.Venda</class>
+        <class>beans.Veiculo</class>
+        <class>beans.Venda</class>
 
         <!-- Configuracoes de conexao ao banco de dados -->
         <properties>

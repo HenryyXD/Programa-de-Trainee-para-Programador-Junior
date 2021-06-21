@@ -1,76 +1,53 @@
 package dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 
 import beans.Venda;
+import util.HibernateUtil;
 
 public class VendaDAO {
-	
-	public EntityManager getEM() {
-		return Persistence.createEntityManagerFactory("dev").createEntityManager();
-	}
-	
-	public Venda salvar(Venda venda) throws Exception{
-		EntityManager em = getEM();
+
+	private EntityManager em = null;
+
+	public Venda salvar(Venda venda) throws SQLException {
 		try {
-			
-			long idVeiculo = venda.getVeiculoVendido().getId();
-			
-			if(veiculoVendido(idVeiculo)) {
-				throw new Exception("Erro! Veiculo " + idVeiculo + " ja foi vendido...");
-			}
-			
+			em = HibernateUtil.getEM();
 			em.getTransaction().begin();
 			em.persist(venda);
 			em.getTransaction().commit();
-		} finally {
-			em.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+			throw new SQLException();
 		}
-		
+
 		return venda;
 	}
 	
 	public Venda buscarVenda(long id) {
-		EntityManager em = getEM();
-		Venda venda = null;
-		try {
-			venda = em.find(Venda.class, id);
-		} finally {
-			em.close();
-		}
-		
-		return venda;
+		return HibernateUtil.getEM().find(Venda.class, id);
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<Venda> buscarVendas(){
-		EntityManager em = getEM();
-		List<Venda> vendas = null;
-		
-		try {
-			vendas = em.createQuery("select v from Venda v").getResultList();
-		} finally {
-			em.close();
-		}
-		
-		return vendas;
+	public List<Venda> buscarVendas() {
+		return HibernateUtil.getEM().createQuery("select v from Venda v").getResultList();
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public boolean veiculoVendido(long idVeiculo) {
-		EntityManager em = getEM();
-		try {
-			return em.createQuery("select v from Venda v where v.veiculoVendido.id = :idVeiculo")
-					.setParameter("idVeiculo", idVeiculo)
-					.getResultStream()
-					.findFirst()
-					.orElse(null) != null;
-		}finally {
-			em.close();
+	public long veiculoVendido(long idVeiculo) {
+		em = HibernateUtil.getEM();
+		Venda v = (Venda) em.createQuery("select v from Venda v where v.veiculo.id = :idVeiculo")
+				.setParameter("idVeiculo", idVeiculo).getResultStream().findFirst().orElse(null);
+		
+		if(v == null) {
+			return -1;
 		}
-	}
+		
+		return v.getId();
 	
+	}
+
 }

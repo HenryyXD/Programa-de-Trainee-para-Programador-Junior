@@ -1,3 +1,8 @@
 C:\Users\rickl\Desktop\Programa Trainee\Backend\src\main\java\beans\Veiculo.java
+C:\Users\rickl\Desktop\Programa Trainee\Backend\src\main\java\Application.java
+C:\Users\rickl\Desktop\Programa Trainee\Backend\src\main\java\controllers\VeiculoController.java
 C:\Users\rickl\Desktop\Programa Trainee\Backend\src\main\java\beans\Venda.java
-C:\Users\rickl\Desktop\Programa Trainee\Backend\src\main\java\test\TestHibernate.java
+C:\Users\rickl\Desktop\Programa Trainee\Backend\src\main\java\dao\VeiculoDAO.java
+C:\Users\rickl\Desktop\Programa Trainee\Backend\src\main\java\dao\VendaDAO.java
+C:\Users\rickl\Desktop\Programa Trainee\Backend\src\main\java\util\HibernateUtil.java
+C:\Users\rickl\Desktop\Programa Trainee\Backend\src\main\java\controllers\VendaController.java

@@ -1,3 +1,8 @@
-test\TestHibernate.class
+controllers\VendaController.class
+controllers\VeiculoController.class
+dao\VendaDAO.class
+Application.class
+dao\VeiculoDAO.class
 beans\Veiculo.class
 beans\Venda.class
+util\HibernateUtil.class

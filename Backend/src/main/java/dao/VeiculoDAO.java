@@ -1,62 +1,61 @@
 package dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 
 import beans.Veiculo;
+import beans.Venda;
+import util.HibernateUtil;
 
 public class VeiculoDAO {
-	public EntityManager getEM() {
-		return Persistence.createEntityManagerFactory("dev").createEntityManager();
-	}
 
-	public Veiculo salvar(Veiculo veiculo) throws Exception {
-		EntityManager em = getEM();
+	private EntityManager em = null;
+
+	public Veiculo salvar(Veiculo veiculo) throws SQLException {
 		try {
+			em = HibernateUtil.getEM();
 			em.getTransaction().begin();
 			em.persist(veiculo);
 			em.getTransaction().commit();
-		} finally {
-			em.close();
+			return veiculo;
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+			throw new SQLException();
 		}
-		return veiculo;
+
 	}
 
-	public void remover(long id) {
-		EntityManager em = getEM();
+	public void remover(long id) throws SQLException {
 		try {
+			em = HibernateUtil.getEM();
 			em.getTransaction().begin();
 			Veiculo veiculo = em.find(Veiculo.class, id);
+			VendaDAO venda = new VendaDAO();
+			long idVenda = venda.veiculoVendido(id);
+			
+			if(idVenda != -1) {
+				Venda v = em.find(Venda.class, id);
+				em.remove(v);
+			}
+			
 			em.remove(veiculo);
 			em.getTransaction().commit();
-		} finally {
-			em.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+			throw new SQLException();
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Veiculo> buscarVeiculos() {
-		EntityManager em = getEM();
-		List<Veiculo> veiculos = null;
-		try {
-			veiculos = em.createQuery("select v from Veiculo v").getResultList();
-		} finally {
-			em.close();
-		}
-
-		return veiculos;
+		return HibernateUtil.getEM().createQuery("select v from Veiculo v").getResultList();
 	}
 
 	public Veiculo buscarVeiculo(long id) {
-		EntityManager em = getEM();
-		Veiculo veiculo;
-		try {
-			veiculo = em.find(Veiculo.class, id);
-		} finally {
-			em.close();
-		}
-		return veiculo;
+		return HibernateUtil.getEM().find(Veiculo.class, id);
 	}
 }
