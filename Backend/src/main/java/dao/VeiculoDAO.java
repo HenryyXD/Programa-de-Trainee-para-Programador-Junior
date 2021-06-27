@@ -37,7 +37,7 @@ public class VeiculoDAO {
 			long idVenda = venda.veiculoVendido(id);
 			
 			if(idVenda != -1) {
-				Venda v = em.find(Venda.class, id);
+				Venda v = em.find(Venda.class, idVenda);
 				em.remove(v);
 			}
 			

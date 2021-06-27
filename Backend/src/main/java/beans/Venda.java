@@ -36,7 +36,7 @@ public class Venda implements Serializable{
 	private long id;
 
 	@Column(nullable = false, name = "data_da_venda")
-	@JsonbDateFormat("dd/MM/yyyy")
+	@JsonbDateFormat("yyyy-MM-dd")
 	private LocalDate dataVenda;
 
 	@Column(nullable = false, name = "valor_da_venda")

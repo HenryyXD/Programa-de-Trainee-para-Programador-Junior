@@ -1,10 +1,33 @@
-<p>vehicle-create works!</p>
-
-
-<button mat-raised-button (click)="createVehicle()" color="primary">
-  Salvar
-</button>
-
-<button mat-raised-button (click)="cancel()">
-  Cancelar
-</button>
+<mat-card>
+  <mat-card-title> Novo Veículo </mat-card-title>
+  <form>
+    <mat-form-field>
+      <input matInput placeholder="Marca" [(ngModel)]="vehicle.marca" name="marca" required/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Modelo" [(ngModel)]="vehicle.modelo" name="modelo" required/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Ano de Fabricação" [(ngModel)]="vehicle.anoFabricacao" name="anoFabricacao" required/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Chassi" [(ngModel)]="vehicle.chassi" name="chassi" required/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Cor" [(ngModel)]="vehicle.cor" name="cor" required/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Placa" [(ngModel)]="vehicle.placa" name="placa" required/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Valor da Compra" [(ngModel)]="vehicle.valorCompra" name="valorCompra" required/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="date" placeholder="Data da compra" [(ngModel)]="vehicle.dataCompra" name="dataCompra" required/>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="createVehicle()" color="primary">
+    Salvar
+  </button>
+  <button mat-raised-button (click)="cancel()">Cancelar</button>
+</mat-card>

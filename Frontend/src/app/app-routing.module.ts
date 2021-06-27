@@ -1,3 +1,4 @@
+import { VehicleDeleteComponent } from './components/vehicle/vehicle-delete/vehicle-delete.component';
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
@@ -18,6 +19,10 @@ const routes: Routes = [
     path: "veiculos/criar",
     component: VehicleCreateComponent,
   },
+  {
+    path: "veiculos/excluir/:id",
+    component: VehicleDeleteComponent
+  }
 ];
 
 @NgModule({

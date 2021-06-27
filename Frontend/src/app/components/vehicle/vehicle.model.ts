@@ -3,6 +3,7 @@ export interface Vehicle {
   anoFabricacao: number
   chassi: string
   cor: string
+  placa: string
   dataCompra: string
   marca: string
   modelo: string

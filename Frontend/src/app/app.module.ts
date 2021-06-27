@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, LOCALE_ID } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -21,6 +21,20 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 import { HttpClientModule } from "@angular/common/http";
 
+import { FormsModule } from "@angular/forms";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { VehicleReadComponent } from "./components/vehicle/vehicle-read/vehicle-read.component";
+import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatSortModule } from "@angular/material/sort";
+
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common/';
+import { VehicleDeleteComponent } from './components/vehicle/vehicle-delete/vehicle-delete.component';
+
+registerLocaleData(localePt)
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +44,8 @@ import { HttpClientModule } from "@angular/common/http";
     HomeComponent,
     VehicleCrudComponent,
     VehicleCreateComponent,
+    VehicleReadComponent,
+    VehicleDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,8 +58,19 @@ import { HttpClientModule } from "@angular/common/http";
     MatButtonModule,
     MatSnackBarModule,
     HttpClientModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: "pt-BR",
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -45,12 +45,15 @@ public class Veiculo implements Serializable {
 
 	@Column(nullable = false)
 	private String cor;
+	
+	@Column(nullable = false)
+	private String placa;
 
 	@Column(nullable = false)
 	private String chassi;
 
 	@Column(nullable = false, name = "data_da_compra")
-	@JsonbDateFormat(value = "dd/MM/yyyy")
+	@JsonbDateFormat(value = "yyyy-MM-dd")
 	private LocalDate dataCompra;
 
 	@Column(nullable = false, name = "valor_da_compra")
