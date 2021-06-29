@@ -9,6 +9,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class VehicleReadComponent implements OnInit {
   vehicles: Vehicle[] = [];
+  hideTable = true;
   displayedColumns = [
     "id",
     "marca",
@@ -26,6 +27,14 @@ export class VehicleReadComponent implements OnInit {
 
   ngOnInit(): void {
     this.vehicleServer.read().subscribe((vehicles) => {
+      this.hideTable  = (vehicles.length == 0) ? true : false;
+      this.vehicles = vehicles;
+    });
+  }
+
+  filtrar(filtro: string = ""){
+    this.vehicleServer.read(filtro).subscribe((vehicles) => {
+      this.hideTable = false;
       this.vehicles = vehicles;
     });
   }

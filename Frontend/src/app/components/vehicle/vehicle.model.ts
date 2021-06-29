@@ -7,5 +7,5 @@ export interface Vehicle {
   dataCompra: string
   marca: string
   modelo: string
-  valorCompra: number
+  valorCompra: number;
 }

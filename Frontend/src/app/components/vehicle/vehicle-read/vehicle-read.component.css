@@ -17,3 +17,7 @@ tr:hover > td{
 .delete:hover > i {
   color: #ff0019;
 }
+
+.select-form {
+  margin: 10px 0 -10px 20px;
+}

@@ -1,4 +1,18 @@
-<div class="mat-elevation-z4" *ngIf="vehicles.length > 0">
+<div class="mat-elevation-z4" *ngIf="hideTable==false">
+  <mat-form-field class="select-form">
+    <mat-label>Filtro</mat-label>
+    <mat-select name="filtro" (selectionChange)="filtrar(filtro.value)" #filtro value=""> 
+      <mat-option value="">
+        Todos os veículos
+      </mat-option>
+      <mat-option value="vendido">
+        Veículos vendidos
+      </mat-option>
+      <mat-option value="disponivel">
+        Veículos disponíveis
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
   <table mat-table [dataSource]="vehicles">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>Id</th>

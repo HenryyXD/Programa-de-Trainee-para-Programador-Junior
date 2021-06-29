@@ -12,7 +12,7 @@ public class HibernateUtil {
 
 	static {
 		try {
-			em = Persistence.createEntityManagerFactory("dev").createEntityManager();
+			em = Persistence.createEntityManagerFactory("prod").createEntityManager();
 		} catch (Exception ex) {
 			System.err.println("Criação do EntityManager falhou. " + ex);
 			throw new ExceptionInInitializerError();

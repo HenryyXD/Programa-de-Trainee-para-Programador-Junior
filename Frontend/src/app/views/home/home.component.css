@@ -7,3 +7,29 @@
 .home .subtitle {
   font-size: 1.1rem;
 }
+
+mat-grid-tile mat-card{
+  width: 85%;
+  height: 60%;
+  padding: 25px;
+  background-image: linear-gradient(to right, #283593 ,rgb(82, 98, 192));
+  color:white;
+}
+
+.stats-title{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 2rem;
+  padding: 15px 0 50px 15px;
+}
+
+.stats-content{
+  font-size: 3rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-left: 15px;
+}
+
+.material-icons {
+  float: right;
+  padding: 10px 25px 0px 0px;
+  font-size: 4rem;
+}

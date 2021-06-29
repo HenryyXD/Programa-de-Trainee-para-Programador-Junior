@@ -1,8 +1,55 @@
 <mat-card class="home mat-elevation-z3">
-  <mat-card-title class="title">
-    Bem vindo!
-  </mat-card-title>
+  <mat-card-title class="title"> Bem vindo! </mat-card-title>
   <mat-card-subtitle class="subtitle">
     Sistema gerenciador de vendas de veículos
   </mat-card-subtitle>
 </mat-card>
+
+<mat-grid-list cols="2" rowHeight="320px">
+  <mat-grid-tile>
+    <mat-card class="val-compras mat-elevation-z10">
+      <span class="material-icons">
+        shopping_cart
+      </span>
+      <mat-card-title class="stats-title"> 
+        Total em Compras
+      </mat-card-title>
+      <mat-card-content class="stats-content">{{valorCompra | currency:"BRL"}}</mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+    <mat-card class="val-total mat-elevation-z10">
+      <span class="material-icons">
+        trending_up
+      </span>
+      <mat-card-title class="stats-title">
+        Total em Vendas
+      </mat-card-title>
+      <mat-card-content class="stats-content">{{valorVenda | currency:"BRL"}}</mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-card class="lucro mat-elevation-z10">
+      <span class="material-icons">
+        attach_money
+      </span>
+      <mat-card-title class="stats-title">
+        {{lucro >= 0 ? "Lucro" : "Prejuízo"}} do Mês
+      </mat-card-title>
+      <mat-card-content class="stats-content">{{lucro | currency:"BRL"}}</mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-card class="comissoes mat-elevation-z10">
+      <span class="material-icons">
+        payments
+      </span>
+      <mat-card-title class="stats-title"> Total em Comissões </mat-card-title>
+      <mat-card-content class="stats-content">{{valorComissao | currency:"BRL"}}</mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+</mat-grid-list>

@@ -18,13 +18,14 @@ import { VehicleCrudComponent } from "./views/vehicle-crud/vehicle-crud.componen
 import { VehicleCreateComponent } from "./components/vehicle/vehicle-create/vehicle-create.component";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatGridListModule } from "@angular/material/grid-list";
 
 import { HttpClientModule } from "@angular/common/http";
 
 import { FormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import {MatSelectModule} from "@angular/material/select"
+import { MatSelectModule } from "@angular/material/select";
 import { VehicleReadComponent } from "./components/vehicle/vehicle-read/vehicle-read.component";
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
@@ -34,9 +35,9 @@ import localePt from "@angular/common/locales/pt";
 import { registerLocaleData } from "@angular/common/";
 import { VehicleDeleteComponent } from "./components/vehicle/vehicle-delete/vehicle-delete.component";
 import { SaleCrudComponent } from "./views/sale-crud/sale-crud.component";
-import { SaleReadComponent } from './components/sale/sale-read/sale-read.component';
-import { SaleCreateComponent } from './components/sale/sale-create/sale-create.component';
-import { SaleDeleteComponent } from './components/sale/sale-delete/sale-delete.component';
+import { SaleReadComponent } from "./components/sale/sale-read/sale-read.component";
+import { SaleCreateComponent } from "./components/sale/sale-create/sale-create.component";
+import { SaleDeleteComponent } from "./components/sale/sale-delete/sale-delete.component";
 
 registerLocaleData(localePt);
 
@@ -73,7 +74,8 @@ registerLocaleData(localePt);
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSelectModule
+    MatSelectModule,
+    MatGridListModule,
   ],
   providers: [
     {
