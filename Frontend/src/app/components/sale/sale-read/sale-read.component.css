@@ -1,0 +1,19 @@
+table {
+  width: 100%;
+}
+
+tr:hover > td{
+  background-color: rgb(216, 216, 216);
+}
+
+.center {
+  text-align: center;
+}
+
+.delete > i {
+  color: #e35e6b;
+}
+
+.delete:hover > i {
+  color: #ff0019;
+}

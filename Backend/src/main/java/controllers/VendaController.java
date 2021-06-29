@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -73,6 +74,21 @@ public class VendaController {
 			return Response.status(Response.Status.CREATED).build();
 		} catch (Exception ex) {
 			Logger.getLogger(VendaController.class.getName()).log(Level.SEVERE, null, ex);
+			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@DELETE
+	@Path("{id}/")
+	public Response excluir(@PathParam("id") long id) {
+		try {
+			VendaDAO v = new VendaDAO();
+			if(v.buscarVenda(id) == null)
+				return Response.status(Response.Status.NOT_FOUND).build();
+			v.remover(id);
+			return Response.status(Response.Status.OK).build();
+		} catch (Exception ex) {
+			Logger.getLogger(VeiculoController.class.getName()).log(Level.SEVERE, null, ex);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}

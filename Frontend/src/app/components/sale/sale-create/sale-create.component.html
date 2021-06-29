@@ -1,0 +1,51 @@
+<mat-card>
+  <mat-card-title> Nova Venda </mat-card-title>
+  <form>
+    <mat-form-field >
+      <mat-label>Selecione o veículo</mat-label>
+      <mat-select [(ngModel)]="sale.veiculo" name="selectedVehicle" (selectionChange)="calcularComissao()"> 
+        <mat-option *ngFor="let v of vehicles" [value]="v" >
+          ID:{{ v.id }} | {{ v.modelo }} | {{ v.anoFabricacao }} | {{ v.cor }} |
+          {{ v.placa }} | {{v.valorCompra | currency:"BRL"}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="date"
+        placeholder="Data da Venda"
+        [(ngModel)]="sale.dataVenda"
+        name="dataVenda"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        placeholder="Valor da Venda (R$)"
+        [(ngModel)]="sale.valorVenda"
+        (ngModelChange)="calcularComissao()"
+        name="valorVenda"
+        required
+        [disabled] = "sale.veiculo.id == 0"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        placeholder="Comissão do Vendedor (R$)"
+        [(ngModel)]="sale.comissaoVendedor"
+        name="comissaoVendedor"
+        disabled
+      />
+    </mat-form-field>
+    
+  </form>
+  <button mat-raised-button (click)="createSale()" color="primary">
+    Salvar
+  </button>
+  <button mat-raised-button (click)="cancel()">Cancelar</button>
+</mat-card>

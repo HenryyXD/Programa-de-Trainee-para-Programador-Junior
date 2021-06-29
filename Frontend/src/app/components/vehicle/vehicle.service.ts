@@ -34,8 +34,8 @@ export class VehicleService {
     );
   }
 
-  read(): Observable<Vehicle[]> {
-    return this.http.get<Vehicle[]>(this.baseURL).pipe(
+  read(filtro: string = ""): Observable<Vehicle[]> {
+    return this.http.get<Vehicle[]>(this.baseURL + "?filtro=" + filtro).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );

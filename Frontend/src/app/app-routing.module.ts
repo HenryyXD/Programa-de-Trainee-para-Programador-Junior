@@ -1,4 +1,7 @@
-import { VehicleDeleteComponent } from './components/vehicle/vehicle-delete/vehicle-delete.component';
+import { SaleDeleteComponent } from './components/sale/sale-delete/sale-delete.component';
+import { SaleCreateComponent } from './components/sale/sale-create/sale-create.component';
+import { SaleCrudComponent } from "./views/sale-crud/sale-crud.component";
+import { VehicleDeleteComponent } from "./components/vehicle/vehicle-delete/vehicle-delete.component";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
@@ -21,8 +24,20 @@ const routes: Routes = [
   },
   {
     path: "veiculos/excluir/:id",
-    component: VehicleDeleteComponent
-  }
+    component: VehicleDeleteComponent,
+  },
+  {
+    path: "vendas",
+    component: SaleCrudComponent,
+  },
+  {
+    path: "vendas/criar",
+    component: SaleCreateComponent,
+  },
+  {
+    path: "vendas/excluir/:id",
+    component: SaleDeleteComponent,
+  },
 ];
 
 @NgModule({

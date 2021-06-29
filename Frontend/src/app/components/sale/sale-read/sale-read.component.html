@@ -1,0 +1,65 @@
+<div class="mat-elevation-z4" *ngIf="sales.length > 0">
+  <table mat-table [dataSource]="sales">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dataVenda">
+      <th mat-header-cell *matHeaderCellDef>Data da Venda</th>
+      <td mat-cell *matCellDef="let row">{{ row.dataVenda | date: "dd/MM/yyyy" }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="valorVenda">
+      <th mat-header-cell *matHeaderCellDef>Valor da Venda</th>
+      <td mat-cell *matCellDef="let row">{{ row.valorVenda | currency: "BRL"  }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lucro">
+      <th mat-header-cell *matHeaderCellDef>Lucro</th>
+      <td mat-cell *matCellDef="let row">{{ (row.valorVenda - row.veiculo.valorCompra) | currency: "BRL"  }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="comissaoVendedor">
+      <th mat-header-cell *matHeaderCellDef>Comissão</th>
+      <td mat-cell *matCellDef="let row">{{ row.comissaoVendedor | currency: "BRL"  }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="idVeiculo">
+      <th mat-header-cell *matHeaderCellDef>Veiculo ID</th>
+      <td mat-cell *matCellDef="let row">{{ row.veiculo.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="modelo">
+      <th mat-header-cell *matHeaderCellDef>Modelo</th>
+      <td mat-cell *matCellDef="let row">{{ row.veiculo.modelo }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="anoFabricacao">
+      <th mat-header-cell *matHeaderCellDef>Ano</th>
+      <td mat-cell *matCellDef="let row">{{ row.veiculo.anoFabricacao }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cor">
+      <th mat-header-cell *matHeaderCellDef>Cor</th>
+      <td mat-cell *matCellDef="let row">{{ row.veiculo.cor }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="placa">
+      <th mat-header-cell *matHeaderCellDef>Placa</th>
+      <td mat-cell *matCellDef="let row">{{ row.veiculo.placa }}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef class="center">Ações</th>
+      <td mat-cell *matCellDef="let row" class="center">
+        <a routerLink="/vendas/excluir/{{ row.id }}" class="delete">
+          <i class="material-icons"> delete </i>
+        </a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

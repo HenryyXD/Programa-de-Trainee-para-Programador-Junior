@@ -11,6 +11,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -24,9 +25,23 @@ public class VeiculoController {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/")
-	public List<Veiculo> getVeiculos() {
+	public List<Veiculo> getVeiculos(@QueryParam("filtro") String filtro) {
 		try {
-			return new VeiculoDAO().buscarVeiculos();
+			VeiculoDAO veiculoDAO = new VeiculoDAO();
+			
+			if(filtro == null) {
+				return veiculoDAO.buscarVeiculos();
+			}
+			
+			if(filtro.equals("disponivel")) {
+				return veiculoDAO.buscarVeiculosDisponiveis();
+			}
+			
+			if(filtro.equals("vendido")) {
+				return veiculoDAO.buscarVeiculosVendidos();
+			}
+			
+			return veiculoDAO.buscarVeiculos();
 		} catch (Exception ex) {
 			Logger.getLogger(VeiculoController.class.getName()).log(Level.SEVERE, null, ex);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);

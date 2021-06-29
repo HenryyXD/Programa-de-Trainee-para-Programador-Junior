@@ -1,0 +1,112 @@
+<mat-card>
+  <mat-card-title>Excluir Venda</mat-card-title>
+  <form>
+    <mat-form-field>
+      <input
+        matInput
+        type="date"
+        placeholder="Data da Venda"
+        [value]="sale.dataVenda"
+        name="dataVenda"
+        disabled
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        placeholder="Valor da Venda (R$)"
+        [value]="sale.valorVenda"
+        name="valorVenda"
+        disabled
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        placeholder="Comissão do Vendedor (R$)"
+        [value]="sale.comissaoVendedor"
+        name="comissaoVendedor"
+        disabled
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Marca"
+        [value]="sale.veiculo.marca"
+        name="marca"
+        disabled
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Modelo"
+        [value]="sale.veiculo.modelo"
+        name="modelo"
+        disabled
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        placeholder="Ano de Fabricação"
+        [value]="sale.veiculo.anoFabricacao"
+        name="anoFabricacao"
+        disabled
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Chassi"
+        [value]="sale.veiculo.chassi"
+        name="chassi"
+        disabled
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Cor"
+        [value]="sale.veiculo.cor"
+        name="cor"
+        disabled
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Placa"
+        [value]="sale.veiculo.placa"
+        name="placa"
+        disabled
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        placeholder="Valor da Compra (R$)"
+        [value]="sale.veiculo.valorCompra"
+        name="valorCompra"
+        disabled
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="date"
+        placeholder="Data da compra"
+        [value]="sale.veiculo.dataCompra"
+        name="dataCompra"
+        disabled
+      />
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="deleteSale()" color="warn">Excluir</button>
+  <button mat-raised-button (click)="cancel()">Cancelar</button>
+</mat-card>

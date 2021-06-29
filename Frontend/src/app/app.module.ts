@@ -24,16 +24,21 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select"
 import { VehicleReadComponent } from "./components/vehicle/vehicle-read/vehicle-read.component";
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 
-import localePt from '@angular/common/locales/pt';
-import { registerLocaleData } from '@angular/common/';
-import { VehicleDeleteComponent } from './components/vehicle/vehicle-delete/vehicle-delete.component';
+import localePt from "@angular/common/locales/pt";
+import { registerLocaleData } from "@angular/common/";
+import { VehicleDeleteComponent } from "./components/vehicle/vehicle-delete/vehicle-delete.component";
+import { SaleCrudComponent } from "./views/sale-crud/sale-crud.component";
+import { SaleReadComponent } from './components/sale/sale-read/sale-read.component';
+import { SaleCreateComponent } from './components/sale/sale-create/sale-create.component';
+import { SaleDeleteComponent } from './components/sale/sale-delete/sale-delete.component';
 
-registerLocaleData(localePt)
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -46,6 +51,10 @@ registerLocaleData(localePt)
     VehicleCreateComponent,
     VehicleReadComponent,
     VehicleDeleteComponent,
+    SaleCrudComponent,
+    SaleReadComponent,
+    SaleCreateComponent,
+    SaleDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +73,7 @@ registerLocaleData(localePt)
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSelectModule
   ],
   providers: [
     {

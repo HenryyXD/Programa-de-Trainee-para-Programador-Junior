@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import beans.Veiculo;
 import beans.Venda;
 import util.HibernateUtil;
 
@@ -25,6 +26,20 @@ public class VendaDAO {
 		}
 
 		return venda;
+	}
+	
+	public void remover(long id) throws SQLException {
+		try {
+			em = HibernateUtil.getEM();
+			em.getTransaction().begin();
+			Venda venda = em.find(Venda.class, id);
+			em.remove(venda);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+			throw new SQLException();
+		}
 	}
 	
 	public Venda buscarVenda(long id) {

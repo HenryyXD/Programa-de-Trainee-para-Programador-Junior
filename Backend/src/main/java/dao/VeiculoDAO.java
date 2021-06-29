@@ -35,12 +35,12 @@ public class VeiculoDAO {
 			Veiculo veiculo = em.find(Veiculo.class, id);
 			VendaDAO venda = new VendaDAO();
 			long idVenda = venda.veiculoVendido(id);
-			
-			if(idVenda != -1) {
+
+			if (idVenda != -1) {
 				Venda v = em.find(Venda.class, idVenda);
 				em.remove(v);
 			}
-			
+
 			em.remove(veiculo);
 			em.getTransaction().commit();
 		} catch (Exception e) {
@@ -53,6 +53,22 @@ public class VeiculoDAO {
 	@SuppressWarnings("unchecked")
 	public List<Veiculo> buscarVeiculos() {
 		return HibernateUtil.getEM().createQuery("select v from Veiculo v").getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Veiculo> buscarVeiculosVendidos() {
+		String query = "select veiculo from Venda";
+		return HibernateUtil.getEM().createQuery(query).getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Veiculo> buscarVeiculosDisponiveis() {
+		String query = "select vei.* from veiculos as vei "
+				+ "left join vendas as ven "
+				+ "on ven.veiculo_id=vei.id "
+				+ "where ven.id IS NULL;";
+		
+		return HibernateUtil.getEM().createNativeQuery(query, Veiculo.class).getResultList();
 	}
 
 	public Veiculo buscarVeiculo(long id) {
