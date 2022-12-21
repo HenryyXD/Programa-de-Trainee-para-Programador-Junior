@@ -8,5 +8,3 @@
 
 - Listar o valor total em compras e vendas, lucro/prejuízo do mês e o valor pago em comissões.
 
-
-Frontend hospedado - https://agencia-veiculos2.herokuapp.com/
